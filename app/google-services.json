@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "337878938321",
+    "project_id": "ubermensch-936dd",
+    "storage_bucket": "ubermensch-936dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337878938321:android:95f2064104451242cecbf0",
+        "android_client_info": {
+          "package_name": "com.example.ubermensch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337878938321-sm8sufj91tknp562vjt30c7osq4gijen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxyDSMWe_hgNUI90CjMkCLN_6jLXv46Mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337878938321-sm8sufj91tknp562vjt30c7osq4gijen.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

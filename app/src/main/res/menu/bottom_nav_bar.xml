@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"/>
+    <item android:title="User"
+        android:id="@+id/user"
+        android:icon="@drawable/ic_person"/>
+    <item android:id="@+id/menu"
+        android:title=""/>
+    <item android:title="To-do"
+        android:id="@+id/to_do"
+        android:icon="@drawable/ic_to_do"/>
+    <item android:title="Pomodoro"
+        android:id="@+id/pomodoro"
+        android:icon="@drawable/ic_baseline_timer_24"/>
+
+</menu>
