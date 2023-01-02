@@ -28,10 +28,12 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 private lateinit var viewModel:HabitViewModel
+
 class Home : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
 
 
     private lateinit var habitRecyclerView: RecyclerView
@@ -56,6 +58,12 @@ class Home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getHabits(view)
+
+    }
+
+
+    fun getHabits(view: View){
         var layoutManager = LinearLayoutManager(context)
         habitRecyclerView = view.findViewById(R.id.habitList)
         habitRecyclerView.layoutManager = layoutManager
@@ -67,11 +75,8 @@ class Home : Fragment() {
         viewModel.allHabits.observe(viewLifecycleOwner, Observer {
             adapter.updateHabits(it as ArrayList<Habit>?)
         })
-
-
-
-
     }
+
 
     companion object {
         /**
