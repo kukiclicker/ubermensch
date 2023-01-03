@@ -30,7 +30,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
         val currentItem = habitList.get(position)
         holder.title.text = currentItem.title
         holder.note.text = currentItem.note
-        holder.date.text = currentItem.date?.subSequence(0,2).toString()+"/"+currentItem.date?.subSequence(2,4)+"/"+currentItem.date?.subSequence(4,8)
+        holder.date.text = currentItem.date
         holder.difficulty.text = currentItem.difficulty
         holder.tag.text = currentItem.tag
 
@@ -60,6 +60,13 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
     }
     override fun getItemCount(): Int {
         return habitList.size ?: 0
+    }
+    fun updateHabits(habitList: ArrayList<Habit>?){
+        this.habitList. clear()
+        if (habitList != null) {
+            this.habitList.addAll(habitList)
+        }
+        notifyDataSetChanged()
     }
     inner class HabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.title)
