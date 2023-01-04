@@ -11,11 +11,8 @@ import android.widget.Toast
 import com.example.ubermensch.R
 import com.example.ubermensch.models.Habit
 import com.example.ubermensch.repositories.HabitRepository
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import java.util.Date
+
 
 class AddHabitActivity : AppCompatActivity() {
 
@@ -68,6 +65,11 @@ class AddHabitActivity : AppCompatActivity() {
         t_difficulty.visibility = View.INVISIBLE
         btnAdd.visibility = View.INVISIBLE
         dP.visibility = View.VISIBLE
+        l_date.visibility = View.INVISIBLE
+        l_difficulty.visibility = View.INVISIBLE
+        l_tag.visibility = View.INVISIBLE
+        l_title.visibility = View.INVISIBLE
+        l_note.visibility = View.INVISIBLE
         btnConfirm.visibility = View.VISIBLE
         btnConfirm.setOnClickListener {
             t_title.visibility = View.VISIBLE
@@ -76,6 +78,11 @@ class AddHabitActivity : AppCompatActivity() {
             t_date.visibility = View.VISIBLE
             t_difficulty.visibility = View.VISIBLE
             btnAdd.visibility = View.VISIBLE
+            l_date.visibility = View.VISIBLE
+            l_difficulty.visibility = View.VISIBLE
+            l_tag.visibility = View.VISIBLE
+            l_title.visibility = View.VISIBLE
+            l_note.visibility = View.VISIBLE
             dP.visibility = View.INVISIBLE
             btnConfirm.visibility = View.INVISIBLE
             t_date.text = dP.dayOfMonth.toString()+"/"+(dP.month.toInt()+1).toString()+"/"+dP.year.toString()
@@ -108,7 +115,7 @@ class AddHabitActivity : AppCompatActivity() {
             val habitID = dbRef.push().key!!
             val habit = Habit(habit_title,note,date,difficulty,tag,false)
             dbRef.child(habitID).setValue(habit).addOnCompleteListener {
-                Toast.makeText(this,"Habit added succesfully",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Habit added successfully",Toast.LENGTH_LONG).show()
                 t_title.text.clear()
                 t_note.text.clear()
                 t_tag.text.clear()

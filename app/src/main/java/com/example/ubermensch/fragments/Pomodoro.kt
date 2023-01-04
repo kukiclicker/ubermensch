@@ -14,12 +14,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.TimePicker
 import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
-import androidx.core.text.set
 import com.example.ubermensch.R
-import com.example.ubermensch.activities.MainActivity
-import com.example.ubermensch.activities.SetTimeActivity
-import kotlin.time.Duration.Companion.milliseconds
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,10 +29,6 @@ private const val ARG_PARAM2 = "param2"
  */
 class Pomodoro : Fragment() {
     // TODO: Rename and change types of parameters
-    enum class TimerState{
-        Stopped,Running,Paused
-    }
-
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var timer: CountDownTimer
@@ -69,15 +61,12 @@ class Pomodoro : Fragment() {
 
         return inflater.inflate(R.layout.fragment_pomodoro, container, false)
     }
-
-
     override fun onStart() {
         super.onStart()
         var show = false
         if(!timerText.text.equals("00:00:00")) {
             show = true
         }
-
         timer = object: CountDownTimer(timeInMS,1) {
             @SuppressLint("SetTextI18n")
             override fun onTick(remaining: Long) {
@@ -92,23 +81,20 @@ class Pomodoro : Fragment() {
                         else{minutes.toString()+":"}+
                         if(seconds<10)"0"+seconds.toString()
                         else{seconds.toString()}
-
             }
-
             override fun onFinish() {
                 if(show)
                 {
                     Toast.makeText( activity,"Time is up! Take a break!", Toast.LENGTH_SHORT).show()
-
                 }
             }
         }.start()
     }
-
     override fun onStop() {
         super.onStop()
-        timeInMS = timeInMS
-        timer.start()
+        timeInMS = 0
+        timerText.text = "00:00:00"
+
     }
     override fun onPause() {
         super.onPause()
@@ -172,7 +158,6 @@ class Pomodoro : Fragment() {
         }
 
     }
-
     companion object {
         /**
          * Use this factory method to create a new instance of

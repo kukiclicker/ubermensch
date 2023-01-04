@@ -1,6 +1,5 @@
 package com.example.ubermensch.adapters
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import com.example.ubermensch.models.Habit
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-
 
 class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
     private val habitList = ArrayList<Habit>()
@@ -48,7 +46,6 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                             }
                         }
                     }
-
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }

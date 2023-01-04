@@ -13,7 +13,6 @@ import com.example.ubermensch.R
 import com.example.ubermensch.adapters.HabitAdapter
 import com.example.ubermensch.models.Habit
 import com.example.ubermensch.models.HabitViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,9 +32,6 @@ class Home : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
-
-
     private lateinit var habitRecyclerView: RecyclerView
     private lateinit var  adapter: HabitAdapter
 
@@ -47,7 +43,6 @@ class Home : Fragment() {
         }
 
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,14 +50,11 @@ class Home : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getHabits(view)
 
     }
-
-
     fun getHabits(view: View){
         var layoutManager = LinearLayoutManager(context)
         habitRecyclerView = view.findViewById(R.id.habitList)
@@ -76,8 +68,6 @@ class Home : Fragment() {
             adapter.updateHabits(it as ArrayList<Habit>?)
         })
     }
-
-
     companion object {
         /**
          * Use this factory method to create a new instance of
