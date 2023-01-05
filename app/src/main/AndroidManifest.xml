@@ -15,7 +15,14 @@
         android:theme="@style/Theme.Ubermensch"
         tools:targetApi="31">
         <activity
-            android:name=".SetTimeActivity"
+            android:name=".activities.ResetPasswordActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.SetTimeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

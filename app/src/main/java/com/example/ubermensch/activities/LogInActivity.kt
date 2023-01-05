@@ -3,7 +3,10 @@ package com.example.ubermensch.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import com.example.ubermensch.R
 import com.example.ubermensch.databinding.ActivityLogInBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -11,6 +14,7 @@ class LogInActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityLogInBinding
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var forgotPass: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +28,12 @@ class LogInActivity : AppCompatActivity() {
             val intent = Intent(this, LogInActivity::class.java)
             startActivity(intent)
         }
+        forgotPass = findViewById(R.id.ForgotPassword)
+        forgotPass.setOnClickListener {
+            val intent = Intent(this, ResetPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.buttonLogIn.setOnClickListener {
             val email = binding.usersEmail.text.toString()
             val pass = binding.usersPassword.text.toString()
@@ -33,6 +43,8 @@ class LogInActivity : AppCompatActivity() {
                     if(it.isSuccessful){
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
+                        finish()
+
 
                     }
                     else{

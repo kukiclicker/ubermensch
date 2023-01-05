@@ -30,6 +30,7 @@ class RegisterActivity : AppCompatActivity() {
                         if(it.isSuccessful){
                             val intent = Intent(this, LogInActivity::class.java)
                             startActivity(intent)
+                            finish()
 
                         }
                         else{
@@ -48,6 +49,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.imageBack.setOnClickListener{
             val intent = Intent(this, LogInActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
