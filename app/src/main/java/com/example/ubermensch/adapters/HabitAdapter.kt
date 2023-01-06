@@ -31,6 +31,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
         holder.date.text = currentItem.date
         holder.difficulty.text = currentItem.difficulty
         holder.tag.text = currentItem.tag
+        holder.counter.text = currentItem.counter.toString()
 
         btn = holder.itemView.findViewById(R.id.floatingActionButtonCheck)
         try {
@@ -71,6 +72,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
         val date: TextView = itemView.findViewById(R.id.date)
         val difficulty: TextView = itemView.findViewById(R.id.difficulty)
         val tag: TextView = itemView.findViewById(R.id.tag)
+        val counter: TextView = itemView.findViewById(R.id.countStreak)
     }
 }
 

@@ -1,6 +1,5 @@
 package com.example.ubermensch.repositories
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.example.ubermensch.models.Habit
 import com.google.firebase.auth.FirebaseAuth
@@ -36,9 +35,9 @@ class HabitRepository {
                         val date = dataSnapshot.child("date").getValue().toString()
                         val difficulty = dataSnapshot.child("difficulty").getValue().toString()
                         val tag = dataSnapshot.child("tag").getValue().toString()
-                        val isDone = dataSnapshot.child("isDone").getValue().toString().toBoolean()
+                        val counter = dataSnapshot.child("counter").getValue().toString().toInt()
 
-                        Habit(title, note,date,difficulty,tag,isDone)!!
+                        Habit(title, note,date,difficulty,tag,counter)
                     }
                     habitList.postValue(_habitList)
                 } catch (e: Exception) {

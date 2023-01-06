@@ -6,7 +6,7 @@ package com.example.ubermensch.models
         var  date:String?=null,
         var  difficulty:String?=null,
         var  tag:String?=null,
-        var isDone:Boolean = false)
+        var counter:Int?=null)
 
 
 

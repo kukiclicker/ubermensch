@@ -30,6 +30,7 @@ class AddHabitActivity : AppCompatActivity() {
     private lateinit var l_date: TextView
     private lateinit var btnConfirm: Button
     private lateinit var l_difficulty: TextView
+    private lateinit var t_counter:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +50,7 @@ class AddHabitActivity : AppCompatActivity() {
         l_difficulty = findViewById(R.id.textView5)
         btnConfirm = findViewById(R.id.btnConfirmDate)
         dbRef = HabitRepository().databaseReference
+
 
         t_date.setOnClickListener{
             pickDate()
@@ -113,7 +115,7 @@ class AddHabitActivity : AppCompatActivity() {
         }
         else{
             val habitID = dbRef.push().key!!
-            val habit = Habit(habit_title,note,date,difficulty,tag,false)
+            val habit = Habit(habit_title,note,date,difficulty,tag,0)
             dbRef.child(habitID).setValue(habit).addOnCompleteListener {
                 Toast.makeText(this,"Habit added successfully",Toast.LENGTH_LONG).show()
                 t_title.text.clear()
@@ -121,6 +123,7 @@ class AddHabitActivity : AppCompatActivity() {
                 t_tag.text.clear()
                 t_date.text = ""
                 t_difficulty.text.clear()
+
             }.addOnFailureListener{
                     err -> Toast.makeText(this,"Error ${err.message}",Toast.LENGTH_SHORT).show()
             }

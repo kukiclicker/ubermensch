@@ -121,6 +121,24 @@
                 android:text="easy"
                 android:textColor="@color/yellow"
                 android:textSize="15sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Streak :"
+                android:textColor="@color/lightblue"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/countStreak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="0"
+
+                android:textColor="@color/yellow"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -166,5 +184,13 @@
         app:maxImageSize="40dp"
         app:rippleColor="@color/black"
         app:srcCompat="@drawable/ic_baseline_check_24" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="340dp"
+        android:translationY="95dp"
+        app:srcCompat="@drawable/ic_baseline_delete_24" />
 
 </androidx.cardview.widget.CardView>
