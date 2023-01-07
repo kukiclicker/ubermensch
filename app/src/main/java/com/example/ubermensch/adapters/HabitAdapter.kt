@@ -42,7 +42,6 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
 
         try {
             delete.setOnClickListener{
-
                 val query = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
                 query.addListenerForSingleValueEvent(object: ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
@@ -74,13 +73,15 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                     }
                 })
                 refresh.setOnClickListener{
+
                     val query = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
                     query.addListenerForSingleValueEvent(object: ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             for (itemSnapshot in snapshot.children) {
                                 val item = itemSnapshot.getValue(Habit::class.java)
                                 if (item != null) {
-                                    itemSnapshot.ref.updateChildren("counter").
+                                    itemSnapshot.child("counter").ref.setValue(0)
+
                                 }
                             }
                         }
@@ -88,7 +89,12 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                             TODO("Not yet implemented")
                         }
                     })
+                    refresh.animate()
+                        .rotation(360f)
+                        .setDuration(5000)
+                        .start()
                 }
+
             }
         } catch (e: Exception) {
 
