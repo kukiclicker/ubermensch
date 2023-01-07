@@ -177,7 +177,7 @@
         android:clickable="true"
         android:tint="@color/gray"
         android:translationX="300dp"
-        android:translationY="40dp"
+        android:translationY="30dp"
         app:backgroundTint="@color/lightblue"
         app:fabCustomSize="50dp"
         app:fabSize="normal"
@@ -186,11 +186,18 @@
         app:srcCompat="@drawable/ic_baseline_check_24" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:translationX="340dp"
         android:translationY="95dp"
         app:srcCompat="@drawable/ic_baseline_delete_24" />
+    <ImageView
+        android:id="@+id/imgRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="290dp"
+        android:translationY="95dp"
+        app:srcCompat="@drawable/ic_baseline_refresh_24" />
 
 </androidx.cardview.widget.CardView>

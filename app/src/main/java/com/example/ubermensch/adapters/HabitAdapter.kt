@@ -3,6 +3,8 @@ package com.example.ubermensch.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
@@ -13,7 +15,9 @@ import com.google.firebase.database.*
 
 class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
     private val habitList = ArrayList<Habit>()
-    private lateinit var btn: FloatingActionButton
+    private lateinit var delete:ImageView
+    private lateinit var btn:FloatingActionButton
+    private lateinit var refresh:ImageView
     val databaseReference: DatabaseReference =
         FirebaseDatabase.getInstance().getReference("Habits").child(
             FirebaseAuth.getInstance().currentUser?.uid
@@ -32,10 +36,12 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
         holder.difficulty.text = currentItem.difficulty
         holder.tag.text = currentItem.tag
         holder.counter.text = currentItem.counter.toString()
-
+        delete = holder.itemView.findViewById(R.id.imgDelete)
         btn = holder.itemView.findViewById(R.id.floatingActionButtonCheck)
+        refresh = holder.itemView.findViewById(R.id.imgRefresh)
+
         try {
-            btn.setOnClickListener{
+            delete.setOnClickListener{
 
                 val query = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
                 query.addListenerForSingleValueEvent(object: ValueEventListener {
@@ -51,6 +57,38 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                         TODO("Not yet implemented")
                     }
                 })
+            }
+            btn.setOnClickListener{
+                val query = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
+                query.addListenerForSingleValueEvent(object: ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        for (itemSnapshot in snapshot.children) {
+                            val item = itemSnapshot.getValue(Habit::class.java)
+                            if (item != null) {
+                                itemSnapshot.child("counter").ref.setValue(itemSnapshot.child("counter").getValue().toString().toInt()+1)
+                            }
+                        }
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
+                refresh.setOnClickListener{
+                    val query = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
+                    query.addListenerForSingleValueEvent(object: ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            for (itemSnapshot in snapshot.children) {
+                                val item = itemSnapshot.getValue(Habit::class.java)
+                                if (item != null) {
+                                    itemSnapshot.ref.updateChildren("counter").
+                                }
+                            }
+                        }
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+                    })
+                }
             }
         } catch (e: Exception) {
 
@@ -73,6 +111,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
         val difficulty: TextView = itemView.findViewById(R.id.difficulty)
         val tag: TextView = itemView.findViewById(R.id.tag)
         val counter: TextView = itemView.findViewById(R.id.countStreak)
+
     }
 }
 
