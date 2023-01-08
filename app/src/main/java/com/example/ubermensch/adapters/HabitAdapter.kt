@@ -101,7 +101,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
         }
     }
     override fun getItemCount(): Int {
-        return habitList.size ?: 0
+        return habitList.size
     }
     fun updateHabits(habitList: ArrayList<Habit>?){
         this.habitList. clear()
