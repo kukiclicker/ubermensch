@@ -5,7 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
+import com.example.ubermensch.adapters.TodoAdapter
+import com.example.ubermensch.models.TodoViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +27,9 @@ class ToDo : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var todoRecyclerView:RecyclerView
+    private lateinit var adapter:TodoAdapter
+    lateinit var viewModel: TodoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +46,24 @@ class ToDo : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_to_do, container, false)
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getTodos(view)
 
+    }
+    fun getTodos(view: View){
+        var layoutManager = LinearLayoutManager(context)
+        todoRecyclerView = view.findViewById(R.id.todoRecyclerView)
+        todoRecyclerView.layoutManager = layoutManager
+        adapter = TodoAdapter()
+        todoRecyclerView.adapter = adapter
+        todoRecyclerView.setHasFixedSize(true)
+
+        viewModel = ViewModelProvider(this).get(TodoViewModel::class.java)
+        viewModel.allTodos.observe(viewLifecycleOwner, Observer {
+            adapter.updateTodos(it as ArrayList<ToDo>?)
+        })
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of

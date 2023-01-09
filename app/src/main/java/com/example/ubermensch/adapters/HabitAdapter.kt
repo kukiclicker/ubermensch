@@ -89,10 +89,12 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                             TODO("Not yet implemented")
                         }
                     })
-                    refresh.animate()
+                    /*refresh.animate()
                         .rotation(360f)
                         .setDuration(5000)
                         .start()
+
+                     */
                 }
 
             }

@@ -26,7 +26,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [Home.newInstance] factory method to
  * create an instance of this fragment.
  */
-private lateinit var viewModel:HabitViewModel
+lateinit var viewModel:HabitViewModel
 
 class Home : Fragment() {
     // TODO: Rename and change types of parameters

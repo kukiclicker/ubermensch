@@ -6,9 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
-import com.example.ubermensch.models.Habit
 import com.example.ubermensch.models.ToDo
-import com.example.ubermensch.models.TodoViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -23,19 +21,15 @@ class TodoAdapter(): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoAdapter.TodoViewHolder
     {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.habit_layout,
+            R.layout.todo_layout,
             parent,false)
         return TodoViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: HabitAdapter.HabitViewHolder, position: Int) {
-        val currentItem = habitList.get(position)
-        holder.title.text = currentItem.title
-        holder.note.text = currentItem.note
-        holder.date.text = currentItem.date
-        holder.difficulty.text = currentItem.difficulty
-        holder.tag.text = currentItem.tag
-        holder.counter.text = currentItem.counter.toString()
+    override fun onBindViewHolder(holder: TodoAdapter.TodoViewHolder, position: Int) {
+        val currentItem = todoList.get(position)
+        holder.text.text = currentItem.text
+
     }
     fun updateTodos(todoList: ArrayList<ToDo>?){
         this.todoList. clear()
@@ -48,7 +42,7 @@ class TodoAdapter(): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(){
         return todoList.size
     }
     inner class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        var text:TextView = itemView.findViewById(R.id.todoText)
 
     }
 
