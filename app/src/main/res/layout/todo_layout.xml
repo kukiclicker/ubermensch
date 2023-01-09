@@ -10,9 +10,10 @@
     android:outlineSpotShadowColor="@color/yellow"
     >
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButtonCheck2"
+        android:id="@+id/fabTodoDone"
         android:layout_width="30dp"
         android:layout_height="80dp"
+        android:layout_marginTop="10dp"
         android:clickable="true"
         android:tint="@color/gray"
         android:translationX="320dp"
@@ -39,9 +40,11 @@
         <TextView
             android:id="@+id/todoText"
             android:layout_width="331dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginLeft="6dp"
             android:text="Reading a book"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/yellow"
             android:textSize="17dp" />
     </LinearLayout>

@@ -7,9 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
 import com.example.ubermensch.models.ToDo
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 
 class TodoAdapter(): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(){
@@ -18,7 +18,9 @@ class TodoAdapter(): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(){
         FirebaseDatabase.getInstance().getReference("ToDos").child(
             FirebaseAuth.getInstance().currentUser?.uid
                 ?: "Error! UID ")
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoAdapter.TodoViewHolder
+    private lateinit var btnCompleteTask: FloatingActionButton
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder
     {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.todo_layout,
@@ -26,9 +28,26 @@ class TodoAdapter(): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(){
         return TodoViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: TodoAdapter.TodoViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         val currentItem = todoList.get(position)
         holder.text.text = currentItem.text
+        btnCompleteTask = holder.itemView.findViewById(R.id.fabTodoDone)
+        btnCompleteTask.setOnClickListener{
+            val query = databaseReference.orderByChild("text").equalTo(currentItem.text.toString())
+            query.addListenerForSingleValueEvent(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (itemSnapshot in snapshot.children) {
+                        val item = itemSnapshot.getValue(ToDo::class.java)
+                        if (item != null) {
+                            itemSnapshot.ref.removeValue()
+                        }
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+        }
 
     }
     fun updateTodos(todoList: ArrayList<ToDo>?){

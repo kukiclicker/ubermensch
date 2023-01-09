@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
 import com.example.ubermensch.adapters.TodoAdapter
+import com.example.ubermensch.models.ToDo
 import com.example.ubermensch.models.TodoViewModel
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,13 +24,14 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ToDo.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ToDo : Fragment() {
+class ToDoFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var todoRecyclerView:RecyclerView
     private lateinit var adapter:TodoAdapter
     lateinit var viewModel: TodoViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,17 +54,17 @@ class ToDo : Fragment() {
 
     }
     fun getTodos(view: View){
-        var layoutManager = LinearLayoutManager(context)
+        val layoutManager = LinearLayoutManager(context)
         todoRecyclerView = view.findViewById(R.id.todoRecyclerView)
         todoRecyclerView.layoutManager = layoutManager
         adapter = TodoAdapter()
         todoRecyclerView.adapter = adapter
         todoRecyclerView.setHasFixedSize(true)
-
         viewModel = ViewModelProvider(this).get(TodoViewModel::class.java)
         viewModel.allTodos.observe(viewLifecycleOwner, Observer {
             adapter.updateTodos(it as ArrayList<ToDo>?)
         })
+
     }
     companion object {
         /**
@@ -76,7 +78,7 @@ class ToDo : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ToDo().apply {
+            ToDoFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

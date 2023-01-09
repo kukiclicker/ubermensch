@@ -1,14 +1,13 @@
 package com.example.ubermensch.repositories
 
 import androidx.lifecycle.MutableLiveData
-import com.example.ubermensch.models.Habit
 import com.example.ubermensch.models.ToDo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class TodoRepository {
     val databaseReference: DatabaseReference =
-        FirebaseDatabase.getInstance().getReference("Todo").child(
+        FirebaseDatabase.getInstance().getReference("ToDos").child(
             FirebaseAuth.getInstance().currentUser?.uid
             ?: "Error! UID ")
 
@@ -31,7 +30,7 @@ class TodoRepository {
 
                     val _todoList: List<ToDo> = snapshot.children.map { dataSnapshot ->
 
-                        val text = dataSnapshot.child("text").toString()
+                        val text = dataSnapshot.child("text").getValue().toString()
                         ToDo(text)
                     }
                     todoList.postValue(_todoList)
