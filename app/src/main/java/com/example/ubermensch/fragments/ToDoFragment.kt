@@ -1,15 +1,18 @@
 package com.example.ubermensch.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
+import com.example.ubermensch.activities.AddTodoActivity
 import com.example.ubermensch.adapters.TodoAdapter
 import com.example.ubermensch.models.ToDo
 import com.example.ubermensch.models.TodoViewModel
@@ -31,6 +34,7 @@ class ToDoFragment : Fragment() {
     private lateinit var todoRecyclerView:RecyclerView
     private lateinit var adapter:TodoAdapter
     lateinit var viewModel: TodoViewModel
+    private lateinit var addTodoButton: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +68,11 @@ class ToDoFragment : Fragment() {
         viewModel.allTodos.observe(viewLifecycleOwner, Observer {
             adapter.updateTodos(it as ArrayList<ToDo>?)
         })
-
+        addTodoButton = view.findViewById(R.id.addTodo)
+        addTodoButton.setOnClickListener{
+            val intent = Intent (getActivity(), AddTodoActivity::class.java)
+            getActivity()?.startActivity(intent)
+        }
     }
     companion object {
         /**

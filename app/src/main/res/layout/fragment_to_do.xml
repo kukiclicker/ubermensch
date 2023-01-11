@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/yellow"
+            android:layout_marginBottom="70dp"
             tools:listitem="@layout/todo_layout" >
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -26,15 +27,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="- On your TO-DO list -"
-
             android:textColor="@color/lightblue"
             android:textSize="35dp"
-            app:layout_constraintBottom_toBottomOf="@+id/habitList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.023" />
+
+        <TextView
+            android:id="@+id/addTodo"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:background="@drawable/login_fields"
+            android:padding="10dp"
+            android:text="Add todo"
+            android:textAlignment="center"
+            android:textColor="@color/yellow"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/todoRecyclerView"
+            app:layout_constraintVertical_bias="0.466" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,AddHabitActivity::class.java)
             startActivity(intent)
         }
+
     }
     private fun replaceFragment(fragment : Fragment){
         val fm = supportFragmentManager
