@@ -4,25 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AddTodoActivity">
+    tools:context=".activities.AddTodoActivity"
+    android:background="@drawable/app_background">
 
     <EditText
         android:id="@+id/newTodoText"
         android:layout_width="258dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/login_fields"
+        android:background="@drawable/todo_fields"
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="15dp"
-
-        android:textColor="@color/yellow"
+        android:layout_marginLeft="30dp"
+        android:hint="Enter your to-do task "
+        android:textColor="@color/gray"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.745"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+
         app:layout_constraintVertical_bias="0.44" />
 
     <TextView
@@ -34,7 +37,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="parent"
@@ -46,6 +49,25 @@
         android:layout_height="wrap_content"
         android:text="Add"
         android:textColor="@color/yellow"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="394dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.579" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="192dp"
+        android:text="- Add new task to your to-do list - "
+        android:textSize="25dp"
+        android:textColor="@color/lightblue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

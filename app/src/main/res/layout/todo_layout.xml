@@ -16,7 +16,7 @@
         android:layout_marginTop="10dp"
         android:clickable="true"
         android:tint="@color/gray"
-        android:translationX="320dp"
+        android:translationX="300dp"
         app:backgroundTint="@color/lightblue"
         app:fabCustomSize="50dp"
         app:fabSize="normal"
@@ -44,7 +44,7 @@
             android:layout_marginLeft="6dp"
             android:text="Reading a book"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:textColor="@color/yellow"
             android:textSize="17dp" />
     </LinearLayout>

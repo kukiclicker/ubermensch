@@ -35,22 +35,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.023" />
 
-        <TextView
-            android:id="@+id/addTodo"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:background="@drawable/login_fields"
-            android:padding="10dp"
-            android:text="Add todo"
-            android:textAlignment="center"
-            android:textColor="@color/yellow"
-            android:textSize="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/todoRecyclerView"
-            app:layout_constraintVertical_bias="0.466" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

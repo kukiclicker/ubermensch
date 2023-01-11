@@ -68,11 +68,7 @@ class ToDoFragment : Fragment() {
         viewModel.allTodos.observe(viewLifecycleOwner, Observer {
             adapter.updateTodos(it as ArrayList<ToDo>?)
         })
-        addTodoButton = view.findViewById(R.id.addTodo)
-        addTodoButton.setOnClickListener{
-            val intent = Intent (getActivity(), AddTodoActivity::class.java)
-            getActivity()?.startActivity(intent)
-        }
+
     }
     companion object {
         /**

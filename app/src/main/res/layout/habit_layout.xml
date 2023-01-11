@@ -176,7 +176,7 @@
         android:layout_height="80dp"
         android:clickable="true"
         android:tint="@color/gray"
-        android:translationX="300dp"
+        android:translationX="280dp"
         android:translationY="30dp"
         app:backgroundTint="@color/lightblue"
         app:fabCustomSize="50dp"
@@ -189,10 +189,11 @@
         android:id="@+id/imgDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:translationX="340dp"
+        android:translationX="320dp"
         android:translationY="95dp"
         app:srcCompat="@drawable/ic_baseline_delete_24" />
     <ImageView
+        android:visibility="invisible"
         android:id="@+id/imgRefresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
