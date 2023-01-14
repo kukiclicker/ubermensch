@@ -70,7 +70,7 @@ class User : Fragment() {
         }
         btnChangePass.setOnClickListener {
             startActivity(Intent(activity,ChangePasswordActivity::class.java))
-
+            activity?.finish()
         }
 
     }

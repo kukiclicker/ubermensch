@@ -89,29 +89,29 @@
 
 
                 />
+
             <Button
                 android:id="@+id/buttonLogIn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="70dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="42dp"
                 android:layout_marginTop="45dp"
                 android:layout_marginEnd="70dp"
-                android:background="@drawable/login_fields"
-                android:text="Log in"
+
                 android:clickable="true"
+                android:focusable="true"
+                android:text="Log in"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/usersPassword"
-                android:focusable="true" />
+                app:layout_constraintTop_toBottomOf="@id/usersPassword" />
 
             <Button
                 android:id="@+id/buttonRegister"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="70dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="42dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="70dp"
-                android:background="@drawable/login_fields"
                 android:text="Register"
                 android:clickable="true"
                 app:layout_constraintEnd_toEndOf="parent"
