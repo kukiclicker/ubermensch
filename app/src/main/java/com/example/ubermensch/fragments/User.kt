@@ -1,13 +1,17 @@
 package com.example.ubermensch.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.ubermensch.R
+import com.example.ubermensch.activities.ChangePasswordActivity
+import com.example.ubermensch.activities.LogInActivity
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -26,10 +30,12 @@ class User : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    val user = FirebaseAuth.getInstance().currentUser
+    val user = FirebaseAuth.getInstance()
     private lateinit var displayName:TextView
     private lateinit var progress:ProgressBar
     private lateinit var level:TextView
+    private lateinit var btnLogout: Button
+    private lateinit var btnChangePass:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +58,20 @@ class User : Fragment() {
         displayName = view.findViewById(R.id.username)
         progress = view.findViewById(R.id.userLevelProgress)
         level = view.findViewById(R.id.userLevel)
+        btnLogout = view.findViewById(R.id.buttonLogout)
+        btnChangePass = view.findViewById(R.id.buttonChangePassword)
+        if(user != null)
+        {
+            displayName.text = user.currentUser?.email.toString().subSequence(0,user.currentUser?.email.toString().indexOf("@"))
+        }
+        btnLogout.setOnClickListener{
+            user.signOut()
+            startActivity(Intent(activity,LogInActivity::class.java))
+        }
+        btnChangePass.setOnClickListener {
+            startActivity(Intent(activity,ChangePasswordActivity::class.java))
 
-        displayName.text = user?.email.toString().subSequence(0,user?.email.toString().indexOf("@"))
+        }
 
     }
 
