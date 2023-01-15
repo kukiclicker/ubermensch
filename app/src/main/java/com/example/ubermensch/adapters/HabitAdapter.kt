@@ -1,5 +1,6 @@
 package com.example.ubermensch.adapters
 
+import android.app.Dialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
 import com.example.ubermensch.models.Habit
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -18,6 +20,8 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
     private lateinit var delete:ImageView
     private lateinit var btn:FloatingActionButton
     private lateinit var refresh:ImageView
+
+
     val databaseReference: DatabaseReference =
         FirebaseDatabase.getInstance().getReference("Habits").child(
             FirebaseAuth.getInstance().currentUser?.uid
@@ -40,6 +44,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
         btn = holder.itemView.findViewById(R.id.floatingActionButtonCheck)
         refresh = holder.itemView.findViewById(R.id.imgRefresh)
 
+
         try {
             delete.setOnClickListener{
                 val query = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
@@ -57,14 +62,30 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                     }
                 })
             }
-            btn.setOnClickListener{
+
+            /*edit.setOnClickListener{
+                val title = holder.title.text.toString()
+                val note = holder.note.text.toString()
+                val tag = holder.tag.text.toString()
+                val difficulty = holder.difficulty.text.toString()
+                val date = holder.date.text.toString()
+                val counter = holder.counter.text.toString().toInt()
+
+                val editMap = mapOf(
+                    "title" to title,
+                    "note" to note,
+                    "tag" to tag,
+                    "difficulty" to difficulty,
+                    "date" to date,
+                    "counter" to counter
+                )
                 val query = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
                 query.addListenerForSingleValueEvent(object: ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         for (itemSnapshot in snapshot.children) {
                             val item = itemSnapshot.getValue(Habit::class.java)
                             if (item != null) {
-                                itemSnapshot.child("counter").ref.setValue(itemSnapshot.child("counter").getValue().toString().toInt()+1)
+                                itemSnapshot.ref.updateChildren(editMap)
                             }
                         }
                     }
@@ -72,14 +93,36 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                         TODO("Not yet implemented")
                     }
                 })
+            }*/
+            btn.setOnClickListener {
+                val query =
+                    databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
+                query.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        for (itemSnapshot in snapshot.children) {
+                            val item = itemSnapshot.getValue(Habit::class.java)
+                            if (item != null) {
+                                itemSnapshot.child("counter").ref.setValue(
+                                    itemSnapshot.child("counter").getValue().toString().toInt() + 1
+                                )
+                            }
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
+            }
                 refresh.setOnClickListener{
 
-                    val query = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
-                    query.addListenerForSingleValueEvent(object: ValueEventListener {
+                    val secondQuery = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
+                    secondQuery.addListenerForSingleValueEvent(object: ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             for (itemSnapshot in snapshot.children) {
                                 val item = itemSnapshot.getValue(Habit::class.java)
                                 if (item != null) {
+
                                     itemSnapshot.child("counter").ref.setValue(0)
 
                                 }
@@ -97,7 +140,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                      */
                 }
 
-            }
+
         } catch (e: Exception) {
 
         }

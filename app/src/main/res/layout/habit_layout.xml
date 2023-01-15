@@ -152,6 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Since: "
+                android:layout_marginTop="5dp"
                 android:textColor="@color/lightblue"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -162,6 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"
                 android:text="12/12/2022"
                 android:textColor="@color/yellow"
                 android:textSize="12sp" />
@@ -193,12 +195,20 @@
         android:translationY="95dp"
         app:srcCompat="@drawable/ic_baseline_delete_24" />
     <ImageView
-        android:visibility="invisible"
+        android:visibility="visible"
         android:id="@+id/imgRefresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:translationX="290dp"
         android:translationY="95dp"
         app:srcCompat="@drawable/ic_baseline_refresh_24" />
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/imgEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="260dp"
+        android:translationY="95dp"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
 
 </androidx.cardview.widget.CardView>

@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +15,7 @@ import com.example.ubermensch.R
 import com.example.ubermensch.adapters.HabitAdapter
 import com.example.ubermensch.models.Habit
 import com.example.ubermensch.models.HabitViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,6 +37,7 @@ class Home : Fragment() {
     private var param2: String? = null
     private lateinit var habitRecyclerView: RecyclerView
     private lateinit var  adapter: HabitAdapter
+    private lateinit var edit: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
