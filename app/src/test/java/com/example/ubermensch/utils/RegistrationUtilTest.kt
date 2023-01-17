@@ -7,7 +7,7 @@ import org.junit.Test
 class RegistrationUtilTest{
 
     @Test
-    fun testEmptyEmail(){
+    fun testEmptyEmail() {
         val result = RegistrationUtil.userInputValidation(
             "",
             "password",
@@ -15,48 +15,42 @@ class RegistrationUtilTest{
         )
         assertThat(result).isFalse()
     }
+
     @Test
-    fun testValidEmail(){
+    fun testValidRegister() {
         val result = RegistrationUtil.userInputValidation(
             "umitrovic22@gmail.com",
-            "password",
-            "password"
+            "1234",
+            "1234"
         )
         assertThat(result).isTrue()
     }
     @Test
-    fun testEmptyPassword(){
+    fun testIncorrectConfirmedPassword() {
         val result = RegistrationUtil.userInputValidation(
-            "name@gmail.com",
+            "umitrovic22@gmail.com",
+            "123456",
+            "abcdefg"
+        )
+        assertThat(result).isFalse()
+    }
+
+    @Test
+    fun testEmptyPassword() {
+        val result = RegistrationUtil.userInputValidation(
+            "umitrovic22@gmail.com",
             "",
-            "password"
+            ""
         )
         assertThat(result).isFalse()
     }
+
     @Test
-    fun testConfirmPasswordCorrectly(){
+    fun testLengthOfPassword() {
         val result = RegistrationUtil.userInputValidation(
-            "name@gmail.com",
-            "password",
-            "password"
-        )
-        assertThat(result).isFalse()
-    }
-    @Test
-    fun testConfirmPasswordIncorrectly(){
-        val result = RegistrationUtil.userInputValidation(
-            "name@gmail.com",
-            "password",
-            "password"
-        )
-        assertThat(result).isFalse()
-    }
-    @Test
-    fun testPasswordWithLessThen4Digits(){
-        val result = RegistrationUtil.userInputValidation(
-            "name@gmail.com",
-            "pas",
-            "pas"
+            "umitrovic22@gmail.com",
+            "abcdefg5",
+            "abcdefg5"
         )
         assertThat(result).isFalse()
     }

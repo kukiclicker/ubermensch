@@ -8,19 +8,15 @@ object RegistrationUtil {
         password:String,
         confirmedPassword:String
     ):Boolean{
-        if(email.isEmpty() || password.isEmpty())
-        {
+        if(email.isEmpty() || password.isEmpty()) {
             return false
         }
-        if(password != confirmedPassword)
-        {
+        else if(password != confirmedPassword) {
             return false
         }
-        if(password.count{it.isDigit()}<2)
-        {
+        if(password.count { it.isDigit() } < 2) {
             return false
         }
-
         return true
     }
 }
