@@ -33,7 +33,7 @@
                 app:srcCompat="@drawable/superman_logo" />
 
             <EditText
-                android:id="@+id/usersEmail"
+                android:id="@+id/loginEmail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="30dp"
@@ -55,7 +55,7 @@
                 app:layout_constraintTop_toBottomOf="@id/supermanLogo" />
 
             <EditText
-                android:id="@+id/usersPassword"
+                android:id="@+id/loginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="30dp"

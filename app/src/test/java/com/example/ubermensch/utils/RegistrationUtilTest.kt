@@ -19,7 +19,7 @@ class RegistrationUtilTest{
     @Test
     fun testValidRegister() {
         val result = RegistrationUtil.userInputValidation(
-            "umitrovic22@gmail.com",
+            "ivanivanovic@gmail.com",
             "1234",
             "1234"
         )
@@ -28,9 +28,18 @@ class RegistrationUtilTest{
     @Test
     fun testIncorrectConfirmedPassword() {
         val result = RegistrationUtil.userInputValidation(
-            "umitrovic22@gmail.com",
+            "jovanmarkovic@gmail.com",
             "123456",
             "abcdefg"
+        )
+        assertThat(result).isFalse()
+    }
+    @Test
+    fun testExistingEmail() {
+        val result = RegistrationUtil.userInputValidation(
+            "umitrovic@gmail.com",
+            "1245",
+            "12345"
         )
         assertThat(result).isFalse()
     }
@@ -48,9 +57,9 @@ class RegistrationUtilTest{
     @Test
     fun testLengthOfPassword() {
         val result = RegistrationUtil.userInputValidation(
-            "umitrovic22@gmail.com",
-            "abcdefg5",
-            "abcdefg5"
+            "petarpetrovic@gmail.com",
+            "a",
+            "a"
         )
         assertThat(result).isFalse()
     }

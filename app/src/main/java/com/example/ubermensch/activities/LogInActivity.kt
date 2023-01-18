@@ -3,7 +3,6 @@ package com.example.ubermensch.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.ubermensch.R
@@ -24,7 +23,7 @@ class LogInActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        binding.usersEmail.setOnClickListener {
+        binding.loginEmail.setOnClickListener {
             val intent = Intent(this, LogInActivity::class.java)
             startActivity(intent)
         }
@@ -35,8 +34,8 @@ class LogInActivity : AppCompatActivity() {
         }
 
         binding.buttonLogIn.setOnClickListener {
-            val email = binding.usersEmail.text.toString()
-            val pass = binding.usersPassword.text.toString()
+            val email = binding.loginEmail.text.toString()
+            val pass = binding.loginPassword.text.toString()
 
             if(email.isNotEmpty() && pass.isNotEmpty()){
                 firebaseAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener {
