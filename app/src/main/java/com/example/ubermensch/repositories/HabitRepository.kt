@@ -29,7 +29,6 @@ class HabitRepository {
                 try {
 
                     val _habitList: List<Habit> = snapshot.children.map { dataSnapshot ->
-
                         val title = dataSnapshot.child("title").getValue().toString()
                         val note = dataSnapshot.child("note").getValue().toString()
                         val date = dataSnapshot.child("date").getValue().toString()

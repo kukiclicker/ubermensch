@@ -4,18 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.ubermensch.repositories.HabitRepository
-import com.google.firebase.auth.FirebaseAuth
+
 
 class HabitViewModel : ViewModel() {
     private val repository : HabitRepository
     private val _allHabits = MutableLiveData<List<Habit>>()
     val allHabits : LiveData<List<Habit>> = _allHabits
 
-
     init {
-
         repository = HabitRepository().getInstance()
         repository.loadHabits(_allHabits)
-
     }
 }

@@ -16,7 +16,6 @@ class TodoRepository {
 
     fun getInstance(): TodoRepository {
         return INSTANCE ?: synchronized(this) {
-
             val instance = TodoRepository()
             INSTANCE = instance
             instance
@@ -29,7 +28,6 @@ class TodoRepository {
                 try {
 
                     val _todoList: List<ToDo> = snapshot.children.map { dataSnapshot ->
-
                         val text = dataSnapshot.child("text").getValue().toString()
                         ToDo(text)
                     }

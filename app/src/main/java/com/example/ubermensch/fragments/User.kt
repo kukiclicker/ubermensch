@@ -12,37 +12,29 @@ import android.widget.TextView
 import com.example.ubermensch.R
 import com.example.ubermensch.activities.ChangePasswordActivity
 import com.example.ubermensch.activities.LogInActivity
+import com.example.ubermensch.models.Experience
+import com.example.ubermensch.models.Habit
+import com.example.ubermensch.repositories.ExperienceRepository
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import java.io.Console
 
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [User.newInstance] factory method to
- * create an instance of this fragment.
- */
 class User : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     val user = FirebaseAuth.getInstance()
     private lateinit var displayName:TextView
     private lateinit var progress:ProgressBar
     private lateinit var level:TextView
     private lateinit var btnLogout: Button
     private lateinit var btnChangePass:Button
-
+    val databaseReference: DatabaseReference =
+        FirebaseDatabase.getInstance().getReference("Experience").child(
+            FirebaseAuth.getInstance().currentUser?.uid
+                ?: "Error! UID "
+        )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -60,7 +52,7 @@ class User : Fragment() {
         level = view.findViewById(R.id.userLevel)
         btnLogout = view.findViewById(R.id.buttonLogout)
         btnChangePass = view.findViewById(R.id.buttonChangePassword)
-        if(user != null)
+        if(user != null) //TODO:pogledati da li je ovo dobro
         {
             displayName.text = user.currentUser?.email.toString().subSequence(0,user.currentUser?.email.toString().indexOf("@"))
         }
@@ -72,26 +64,16 @@ class User : Fragment() {
             startActivity(Intent(activity,ChangePasswordActivity::class.java))
             activity?.finish()
         }
-
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment User.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            User().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        //TODO:Prebaciti ovu logiku u experience repository
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                level.text = snapshot.child("Level").getValue().toString()+" lvl."
             }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
     }
 }

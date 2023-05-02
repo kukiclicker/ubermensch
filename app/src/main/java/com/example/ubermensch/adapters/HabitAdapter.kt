@@ -63,37 +63,6 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                 })
             }
 
-            /*edit.setOnClickListener{
-                val title = holder.title.text.toString()
-                val note = holder.note.text.toString()
-                val tag = holder.tag.text.toString()
-                val difficulty = holder.difficulty.text.toString()
-                val date = holder.date.text.toString()
-                val counter = holder.counter.text.toString().toInt()
-
-                val editMap = mapOf(
-                    "title" to title,
-                    "note" to note,
-                    "tag" to tag,
-                    "difficulty" to difficulty,
-                    "date" to date,
-                    "counter" to counter
-                )
-                val query = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
-                query.addListenerForSingleValueEvent(object: ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        for (itemSnapshot in snapshot.children) {
-                            val item = itemSnapshot.getValue(Habit::class.java)
-                            if (item != null) {
-                                itemSnapshot.ref.updateChildren(editMap)
-                            }
-                        }
-                    }
-                    override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
-                    }
-                })
-            }*/
             btn.setOnClickListener {
                 val query =
                     databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
@@ -132,12 +101,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                             TODO("Not yet implemented")
                         }
                     })
-                    /*refresh.animate()
-                        .rotation(360f)
-                        .setDuration(5000)
-                        .start()
 
-                     */
                 }
 
 

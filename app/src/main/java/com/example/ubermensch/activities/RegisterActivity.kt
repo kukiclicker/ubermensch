@@ -5,11 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.ubermensch.databinding.ActivityRegisterBinding
+import com.example.ubermensch.repositories.ExperienceRepository
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var firebaseAuth: FirebaseAuth
+
+    //private val experienceRepository:ExperienceRepository = ExperienceRepository()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,13 +34,19 @@ class RegisterActivity : AppCompatActivity() {
                 {
                     firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener {
                         if(it.isSuccessful){
+                            val database: DatabaseReference =
+                                FirebaseDatabase.getInstance().getReference("Experience")
+                            val d = database.child(firebaseAuth.currentUser?.uid.toString())
+                            d.child("Level").setValue(1)
+                            d.child("XP").setValue(0)
                             val intent = Intent(this, LogInActivity::class.java)
                             startActivity(intent)
                             finish()
 
                         }
                         else{
-                            Toast.makeText(this,it.exception.toString(), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this,"Error while creating a user! Try again!",Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(this,it.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

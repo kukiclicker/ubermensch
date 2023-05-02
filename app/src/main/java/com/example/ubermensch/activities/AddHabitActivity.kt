@@ -10,7 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.ubermensch.R
 import com.example.ubermensch.models.Habit
-import com.example.ubermensch.repositories.HabitRepository
+import com.example.ubermensch.repositories.ExperienceRepository
 import com.google.firebase.database.DatabaseReference
 
 
@@ -49,7 +49,7 @@ class AddHabitActivity : AppCompatActivity() {
         l_date = findViewById(R.id.textView7)
         l_difficulty = findViewById(R.id.textView5)
         btnConfirm = findViewById(R.id.btnConfirmDate)
-        dbRef = HabitRepository().databaseReference
+        dbRef = ExperienceRepository().databaseReference
 
 
         t_date.setOnClickListener{
