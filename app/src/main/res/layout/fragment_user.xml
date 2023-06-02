@@ -53,6 +53,8 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="150dp"
                 android:background="@drawable/todo_fields"
+                android:progressTint="@color/xpcolor"
+                android:padding="2dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"

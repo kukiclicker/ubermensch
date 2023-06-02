@@ -84,9 +84,13 @@ class MainActivity : AppCompatActivity() {
         if(!selected){
             btnAddHabitOption.visibility = View.VISIBLE
             btnAddTodoOption.visibility = View.VISIBLE
+            btnAddTodoOption.isClickable = true
+            btnAddHabitOption.isClickable = true
         }else{
             btnAddHabitOption.visibility = View.INVISIBLE
             btnAddTodoOption.visibility = View.INVISIBLE
+            btnAddHabitOption.isClickable = false
+            btnAddTodoOption.isClickable = false
         }
     }
 

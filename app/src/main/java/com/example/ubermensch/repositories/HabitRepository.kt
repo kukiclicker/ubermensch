@@ -8,8 +8,9 @@ import com.google.firebase.database.*
 
 class HabitRepository {
     val databaseReference: DatabaseReference =
-        FirebaseDatabase.getInstance().getReference("Habits").child(FirebaseAuth.getInstance().currentUser?.uid
-            ?: "Error! UID ")
+        FirebaseDatabase.getInstance().getReference("Habits")
+                                      .child(FirebaseAuth.getInstance().currentUser?.uid
+                                        ?: "Error! UID ")
 
     @Volatile
     private var INSTANCE: HabitRepository? = null
