@@ -18,6 +18,19 @@ class ExperienceRepository {
         fun updateLVL(xp:Double){
             databaseReference.child("Level").setValue(floor(0.07* kotlin.math.sqrt(xp)))
         }
+        fun updateXP(xp:Double){
+
+            val query =
+                databaseReference.child("XP").addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                       snapshot.ref.setValue(snapshot.getValue().toString().toDouble()+xp)
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
+
+        }
 
     }
     @Volatile

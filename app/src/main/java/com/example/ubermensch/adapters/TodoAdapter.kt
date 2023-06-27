@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
 import com.example.ubermensch.models.ToDo
+import com.example.ubermensch.repositories.ExperienceRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -47,6 +48,8 @@ class TodoAdapter(): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(){
                     TODO("Not yet implemented")
                 }
             })
+            var xp:Double = 100.0
+            ExperienceRepository.updateXP(xp)
         }
 
     }

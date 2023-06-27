@@ -1,31 +1,30 @@
 package com.example.ubermensch.adapters
 
-import android.app.Dialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
 import com.example.ubermensch.models.Habit
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.example.ubermensch.repositories.ExperienceRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
     private val habitList = ArrayList<Habit>()
-    private lateinit var delete:ImageView
-    private lateinit var btn:FloatingActionButton
-    private lateinit var refresh:ImageView
-
+    private lateinit var btnDelete:ImageView
+    private lateinit var btnCheck:FloatingActionButton
+    private lateinit var btnRefresh:ImageView
 
     val databaseReference: DatabaseReference =
         FirebaseDatabase.getInstance().getReference("Habits").child(
             FirebaseAuth.getInstance().currentUser?.uid
             ?: "Error! UID ")
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.habit_layout,
             parent,false)
@@ -40,13 +39,13 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
         holder.difficulty.text = currentItem.difficulty
         holder.tag.text = currentItem.tag
         holder.counter.text = currentItem.counter.toString()
-        delete = holder.itemView.findViewById(R.id.imgDelete)
-        btn = holder.itemView.findViewById(R.id.floatingActionButtonCheck)
-        refresh = holder.itemView.findViewById(R.id.imgRefresh)
+        btnDelete = holder.itemView.findViewById(R.id.imgDelete)
+        btnCheck = holder.itemView.findViewById(R.id.floatingActionButtonCheck)
+        btnRefresh = holder.itemView.findViewById(R.id.imgRefresh)
 
 
         try {
-            delete.setOnClickListener{
+            btnDelete.setOnClickListener{
                 val query = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
                 query.addListenerForSingleValueEvent(object: ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
@@ -63,7 +62,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                 })
             }
 
-            btn.setOnClickListener {
+            btnCheck.setOnClickListener {
                 val query =
                     databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
                 query.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -77,13 +76,17 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                             }
                         }
                     }
-
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }
                 })
+                var xp:Double = 200.0
+                ExperienceRepository.updateXP(xp)
+
+
+
             }
-                refresh.setOnClickListener{
+                btnRefresh.setOnClickListener{
 
                     val secondQuery = databaseReference.orderByChild("title").equalTo(currentItem.title.toString())
                     secondQuery.addListenerForSingleValueEvent(object: ValueEventListener {
