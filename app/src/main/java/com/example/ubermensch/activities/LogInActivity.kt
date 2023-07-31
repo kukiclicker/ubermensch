@@ -47,7 +47,7 @@ class LogInActivity : AppCompatActivity() {
 
                     }
                     else{
-                        Toast.makeText(this,it.exception.toString(),Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,"Wrong password and/or email! Try again.",Toast.LENGTH_SHORT).show()
                     }
                 }
             }

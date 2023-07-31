@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import com.example.ubermensch.R
 import com.example.ubermensch.activities.ChangePasswordActivity
 import com.example.ubermensch.activities.LogInActivity
@@ -60,6 +61,14 @@ class User : Fragment() {
         btnLogout.setOnClickListener{
             user.signOut()
             startActivity(Intent(activity,LogInActivity::class.java))
+            try{
+                activity?.finish()
+
+            }catch( ex:Exception){
+                Toast.makeText(activity,"Something went wrong! Try again later!",Toast.LENGTH_SHORT).show()
+
+            }
+
         }
         btnChangePass.setOnClickListener {
             startActivity(Intent(activity,ChangePasswordActivity::class.java))
@@ -86,8 +95,8 @@ class User : Fragment() {
                 //max level is calculated based on exp required for the next level - 1 since that
                 //value is the last one in current lvl
                 var max = ((level.text.toString().substringBefore(" lvl.").toInt()+1)/0.07).pow(2).toInt()-1
-                progress.setMax(max)
-                progress.setProgress(floor(xp).toInt())
+                progress.setMax(max-xp.toInt())
+                progress.setProgress(xp.toInt())
                 ExperienceRepository.updateLVL(xp)
 
             }

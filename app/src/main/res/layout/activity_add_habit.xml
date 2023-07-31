@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
     tools:context=".activities.AddHabitActivity">
-
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="95dp"
@@ -21,7 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.339" />
-
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="wrap_content"
@@ -195,6 +192,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <Spinner
+        android:id="@+id/mySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 
     <Button
         android:id="@+id/btnAddHabit"

@@ -7,4 +7,14 @@
     <string name="_30_min">30 min</string>
     <string name="_60_min">60 min</string>
     <string name="optimal_time_for_a_session">Optimal time for a pomodoro session</string>
+    <string name="selected_item">Selected item:</string>
+
+    <string-array name="Difficulties">
+        <item>very hard</item>
+        <item>hard</item>
+        <item>medium</item>
+        <item>easy</item>
+        <item>very easy</item>
+    </string-array>
 </resources>
+

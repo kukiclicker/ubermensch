@@ -14,8 +14,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
-    //private val experienceRepository:ExperienceRepository = ExperienceRepository()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -46,7 +44,6 @@ class RegisterActivity : AppCompatActivity() {
                         }
                         else{
                             Toast.makeText(this,"Error while creating a user! Try again!",Toast.LENGTH_SHORT).show()
-                            //Toast.makeText(this,it.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

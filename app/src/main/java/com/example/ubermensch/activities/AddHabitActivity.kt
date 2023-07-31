@@ -3,11 +3,7 @@ package com.example.ubermensch.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.example.ubermensch.R
 import com.example.ubermensch.models.Habit
 import com.example.ubermensch.repositories.HabitRepository
@@ -30,7 +26,9 @@ class AddHabitActivity : AppCompatActivity() {
     private lateinit var l_date: TextView
     private lateinit var btnConfirm: Button
     private lateinit var l_difficulty: TextView
-    private lateinit var t_counter:TextView
+    private lateinit var spinner: Spinner
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +47,7 @@ class AddHabitActivity : AppCompatActivity() {
         l_date = findViewById(R.id.textView7)
         l_difficulty = findViewById(R.id.textView5)
         btnConfirm = findViewById(R.id.btnConfirmDate)
+        spinner = findViewById(R.id.mySpinner)
         dbRef = HabitRepository().databaseReference
 
 
