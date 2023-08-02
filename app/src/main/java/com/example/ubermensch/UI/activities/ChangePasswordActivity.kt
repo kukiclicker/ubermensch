@@ -1,4 +1,4 @@
-package com.example.ubermensch.activities
+package com.example.ubermensch.UI.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -51,7 +51,7 @@ class ChangePasswordActivity : AppCompatActivity() {
                                         if (task.isSuccessful && !currentPassword.equals(newPassword)) {
                                             Toast.makeText(this,"Password changed successfully!",Toast.LENGTH_SHORT).show()
                                             auth.signOut()
-                                            startActivity(Intent(this,LogInActivity::class.java))
+                                            startActivity(Intent(this, LogInActivity::class.java))
                                             finish()
                                         }
                                     }

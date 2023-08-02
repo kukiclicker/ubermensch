@@ -1,4 +1,4 @@
-package com.example.ubermensch.fragments
+package com.example.ubermensch.UI.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent

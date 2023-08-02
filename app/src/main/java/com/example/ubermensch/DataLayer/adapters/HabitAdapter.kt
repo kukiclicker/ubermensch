@@ -1,4 +1,4 @@
-package com.example.ubermensch.adapters
+package com.example.ubermensch.DataLayer.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
-import com.example.ubermensch.models.Habit
-import com.example.ubermensch.repositories.ExperienceRepository
+import com.example.ubermensch.DataLayer.models.Habit
+import com.example.ubermensch.DataLayer.repositories.ExperienceRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
-    tools:context=".activities.AddHabitActivity">
+    tools:context=".UI.activities.AddHabitActivity">
     <TextView
         android:id="@+id/textView3"
         android:layout_width="95dp"

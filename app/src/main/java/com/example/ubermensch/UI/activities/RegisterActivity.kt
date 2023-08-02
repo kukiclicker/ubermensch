@@ -1,11 +1,11 @@
-package com.example.ubermensch.activities
+package com.example.ubermensch.UI.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.ubermensch.databinding.ActivityRegisterBinding
-import com.example.ubermensch.repositories.ExperienceRepository
+import com.example.ubermensch.DataLayer.repositories.ExperienceRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase

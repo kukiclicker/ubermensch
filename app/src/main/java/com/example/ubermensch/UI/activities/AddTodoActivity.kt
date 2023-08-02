@@ -1,4 +1,4 @@
-package com.example.ubermensch.activities
+package com.example.ubermensch.UI.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,8 +7,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.ubermensch.R
-import com.example.ubermensch.models.ToDo
-import com.example.ubermensch.repositories.TodoRepository
+import com.example.ubermensch.DataLayer.models.ToDo
+import com.example.ubermensch.DataLayer.repositories.TodoRepository
 import com.google.firebase.database.DatabaseReference
 
 private lateinit var dbRef: DatabaseReference

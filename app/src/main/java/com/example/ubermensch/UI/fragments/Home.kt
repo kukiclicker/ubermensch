@@ -1,21 +1,19 @@
-package com.example.ubermensch.fragments
+package com.example.ubermensch.UI.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
-import com.example.ubermensch.adapters.HabitAdapter
-import com.example.ubermensch.models.Habit
-import com.example.ubermensch.models.HabitViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.example.ubermensch.DataLayer.adapters.HabitAdapter
+import com.example.ubermensch.DataLayer.models.Habit
+import com.example.ubermensch.DomainLayer.HabitViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,7 +27,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [Home.newInstance] factory method to
  * create an instance of this fragment.
  */
-lateinit var viewModel:HabitViewModel
+lateinit var viewModel: HabitViewModel
 
 class Home : Fragment() {
     // TODO: Rename and change types of parameters

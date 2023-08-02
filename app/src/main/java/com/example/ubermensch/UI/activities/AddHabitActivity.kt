@@ -1,12 +1,12 @@
-package com.example.ubermensch.activities
+package com.example.ubermensch.UI.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import com.example.ubermensch.R
-import com.example.ubermensch.models.Habit
-import com.example.ubermensch.repositories.HabitRepository
+import com.example.ubermensch.DataLayer.models.Habit
+import com.example.ubermensch.DataLayer.repositories.HabitRepository
 import com.google.firebase.database.DatabaseReference
 
 

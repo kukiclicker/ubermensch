@@ -1,4 +1,4 @@
-package com.example.ubermensch.activities
+package com.example.ubermensch.UI.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,10 +8,10 @@ import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import com.example.ubermensch.R
 import com.example.ubermensch.databinding.ActivityMainBinding
-import com.example.ubermensch.fragments.Home
-import com.example.ubermensch.fragments.Pomodoro
-import com.example.ubermensch.fragments.ToDoFragment
-import com.example.ubermensch.fragments.User
+import com.example.ubermensch.UI.fragments.Home
+import com.example.ubermensch.UI.fragments.Pomodoro
+import com.example.ubermensch.UI.fragments.ToDoFragment
+import com.example.ubermensch.UI.fragments.User
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -54,13 +54,13 @@ class MainActivity : AppCompatActivity() {
         btnAddTodoOption= findViewById(R.id.floatingActionButtonAddTodoOption)
         btnAddTodoOption.setOnClickListener{
 
-            val intent = Intent(this,AddTodoActivity::class.java)
+            val intent = Intent(this, AddTodoActivity::class.java)
             startActivity(intent)
         }
         btnAddHabitOption = findViewById(R.id.floatingActionButtonAddHabitOption)
         btnAddHabitOption.setOnClickListener{
 
-            val intent = Intent(this,AddHabitActivity::class.java)
+            val intent = Intent(this, AddHabitActivity::class.java)
             startActivity(intent)
         }
 

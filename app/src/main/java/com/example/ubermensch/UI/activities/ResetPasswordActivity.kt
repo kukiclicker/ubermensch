@@ -1,4 +1,4 @@
-package com.example.ubermensch.activities
+package com.example.ubermensch.UI.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

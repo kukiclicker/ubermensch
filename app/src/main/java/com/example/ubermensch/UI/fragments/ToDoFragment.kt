@@ -1,6 +1,5 @@
-package com.example.ubermensch.fragments
+package com.example.ubermensch.UI.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,10 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
-import com.example.ubermensch.activities.AddTodoActivity
-import com.example.ubermensch.adapters.TodoAdapter
-import com.example.ubermensch.models.ToDo
-import com.example.ubermensch.models.TodoViewModel
+import com.example.ubermensch.DataLayer.adapters.TodoAdapter
+import com.example.ubermensch.DataLayer.models.ToDo
+import com.example.ubermensch.DomainLayer.TodoViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,7 +30,7 @@ class ToDoFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var todoRecyclerView:RecyclerView
-    private lateinit var adapter:TodoAdapter
+    private lateinit var adapter: TodoAdapter
     lateinit var viewModel: TodoViewModel
     private lateinit var addTodoButton: TextView
 

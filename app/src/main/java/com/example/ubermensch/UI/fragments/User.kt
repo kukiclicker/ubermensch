@@ -1,4 +1,4 @@
-package com.example.ubermensch.fragments
+package com.example.ubermensch.UI.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,9 +11,9 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import com.example.ubermensch.R
-import com.example.ubermensch.activities.ChangePasswordActivity
-import com.example.ubermensch.activities.LogInActivity
-import com.example.ubermensch.repositories.ExperienceRepository
+import com.example.ubermensch.UI.activities.ChangePasswordActivity
+import com.example.ubermensch.UI.activities.LogInActivity
+import com.example.ubermensch.DataLayer.repositories.ExperienceRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlin.math.pow
@@ -56,7 +56,7 @@ class User : Fragment() {
         }
         btnLogout.setOnClickListener{
             user.signOut()
-            startActivity(Intent(activity,LogInActivity::class.java))
+            startActivity(Intent(activity, LogInActivity::class.java))
             try{
                 activity?.finish()
 
@@ -67,7 +67,7 @@ class User : Fragment() {
 
         }
         btnChangePass.setOnClickListener {
-            startActivity(Intent(activity,ChangePasswordActivity::class.java))
+            startActivity(Intent(activity, ChangePasswordActivity::class.java))
             activity?.finish()
         }
 

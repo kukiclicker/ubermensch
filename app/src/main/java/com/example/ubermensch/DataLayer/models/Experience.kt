@@ -1,4 +1,4 @@
-package com.example.ubermensch.models
+package com.example.ubermensch.DataLayer.models
 
 class Experience(
     var Level: Int? = 1,
