@@ -5,12 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubermensch.R
 import com.example.ubermensch.DataLayer.models.Habit
 import com.example.ubermensch.DataLayer.repositories.ExperienceRepository
+import com.example.ubermensch.DataLayer.repositories.HabitRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
@@ -19,11 +20,8 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
     private lateinit var btnCheck:FloatingActionButton
     private lateinit var btnRefresh:ImageView
 
-    val databaseReference: DatabaseReference =
-        FirebaseDatabase.getInstance().getReference("Habits").child(
-            FirebaseAuth.getInstance().currentUser?.uid
-            ?: "Error! UID ")
-
+    private val HabitRepository:HabitRepository =  HabitRepository()
+    val databaseReference: DatabaseReference = HabitRepository.databaseReference
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.habit_layout,
@@ -57,7 +55,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                         }
                     }
                     override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
+
                     }
                 })
             }
@@ -80,7 +78,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
                         TODO("Not yet implemented")
                     }
                 })
-                var xp:Double = 200.0
+                val xp = 200.0
                 ExperienceRepository.updateXP(xp)
 
 
@@ -109,6 +107,7 @@ class HabitAdapter() : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
 
 
         } catch (e: Exception) {
+
 
         }
     }

@@ -11,7 +11,7 @@ import com.example.ubermensch.databinding.ActivityMainBinding
 import com.example.ubermensch.UI.fragments.Home
 import com.example.ubermensch.UI.fragments.Pomodoro
 import com.example.ubermensch.UI.fragments.ToDoFragment
-import com.example.ubermensch.UI.fragments.User
+import com.example.ubermensch.UI.fragments.UserFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.home -> replaceFragment(Home())
                 R.id.pomodoro -> replaceFragment(Pomodoro())
-                R.id.user -> replaceFragment(User())
+                R.id.user -> replaceFragment(UserFragment())
                 R.id.to_do -> replaceFragment(ToDoFragment())
                 else -> {
                 }

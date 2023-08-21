@@ -26,7 +26,7 @@ class AddHabitActivity : AppCompatActivity() {
     private lateinit var l_date: TextView
     private lateinit var btnConfirm: Button
     private lateinit var l_difficulty: TextView
-    private lateinit var spinner: Spinner
+
 
 
 
@@ -47,7 +47,6 @@ class AddHabitActivity : AppCompatActivity() {
         l_date = findViewById(R.id.textView7)
         l_difficulty = findViewById(R.id.textView5)
         btnConfirm = findViewById(R.id.btnConfirmDate)
-        spinner = findViewById(R.id.mySpinner)
         dbRef = HabitRepository().databaseReference
 
 

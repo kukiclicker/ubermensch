@@ -23,14 +23,14 @@ class ResetPasswordActivity : AppCompatActivity() {
         btnReset = findViewById(R.id.buttonReset)
         auth = FirebaseAuth.getInstance()
         btnReset.setOnClickListener{
-            var sPassword = email.text.toString()
-            auth.sendPasswordResetEmail(sPassword).addOnSuccessListener {
+            var email = email.text.toString()
+            auth.sendPasswordResetEmail(email).addOnSuccessListener {
                 Toast.makeText(this,"Request for password reset was sent to your email!",Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, LogInActivity::class.java)
                 startActivity(intent)
                 finish()
             }.addOnFailureListener{
-                Toast.makeText(this,it.toString(),Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Invalid email address! Try again!",Toast.LENGTH_SHORT).show()
             }
 
         }

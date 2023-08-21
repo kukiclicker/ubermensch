@@ -43,8 +43,6 @@ class LogInActivity : AppCompatActivity() {
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
-
-
                     }
                     else{
                         Toast.makeText(this,"Wrong password and/or email! Try again.",Toast.LENGTH_SHORT).show()

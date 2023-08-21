@@ -19,7 +19,7 @@ import com.google.firebase.database.*
 import kotlin.math.pow
 
 
-class User : Fragment() {
+class UserFragment : Fragment() {
     val user = FirebaseAuth.getInstance()
     private lateinit var displayName:TextView
     private lateinit var progress:ProgressBar

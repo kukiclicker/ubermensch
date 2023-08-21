@@ -1,7 +1,6 @@
 package com.example.ubermensch.UI.fragments
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
@@ -9,11 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.TimePicker
 import android.widget.Toast
+import com.example.ubermensch.DataLayer.repositories.ExperienceRepository
 import com.example.ubermensch.R
 
 
@@ -86,6 +85,8 @@ class Pomodoro : Fragment() {
                 if(show)
                 {
                     Toast.makeText( activity,"Time is up! Take a break!", Toast.LENGTH_SHORT).show()
+                    var xp = 300.0
+                    ExperienceRepository.updateXP(xp)
                 }
             }
         }.start()

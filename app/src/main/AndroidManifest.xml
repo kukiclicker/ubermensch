@@ -35,13 +35,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <!--<activity
-            android:name="UI.activities.SetTimeActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>-->
         <activity
             android:name=".UI.activities.RegisterActivity"
             android:exported="false">
